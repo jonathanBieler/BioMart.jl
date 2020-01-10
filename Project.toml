@@ -1,0 +1,13 @@
+name = "BioMart"
+uuid = "d3a97c8b-a0ae-4566-9541-30732b1a2223"
+authors = ["Jonathan Bieler <jonathan.bieler@alumni.epfl.ch>"]
+version = "0.1.0"
+
+[compat]
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
