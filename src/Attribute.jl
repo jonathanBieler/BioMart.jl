@@ -1,3 +1,14 @@
+"""
+    struct Attribute
+        name::String
+    end
+
+Specify an attribute to be returned by the query.
+
+Example :
+
+    BioMart.Attribute("external_gene_name")
+"""
 struct Attribute
     name::String
 end
@@ -11,6 +22,18 @@ struct Attributes
     attributes::Vector{Attribute}
 end
 
+"""
+    Attributes(args...) 
+
+Specify a list of attributes to be returned by the query.
+
+Example :
+
+    BioMart.Attributes(
+        "external_gene_name",
+        "strand"
+    )
+"""
 function Attributes(args...) 
     Attributes([Attribute(arg) for arg in args])
 end

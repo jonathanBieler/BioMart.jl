@@ -6,7 +6,7 @@ end
 
 Dataset(dataset::String) = Dataset(dataset,"","")
 
-function datasets(database::String)
+@memoize function datasets(database::String)
 
     url = string(BioMart.BIOMART_URL, "?type=datasets&requestid=biomaRt&mart=$(database)")
     r = HTTP.get(url)
@@ -24,4 +24,18 @@ function datasets(database::String)
     out
 end
 
+"""
+    BioMart.datasets(database::Database)
+    BioMart.datasets(database::String)
+
+List the datasets available for a given database.
+
+Examples : 
+
+    BioMart.datasets("ENSEMBL_MART_ENSEMBL")
+    
+    dbs = BioMart.databases()
+    BioMart.datasets(dbs[1])
+
+""" 
 datasets(database::Database) = datasets(database.name)

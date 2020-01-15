@@ -7,7 +7,7 @@ struct Database
     port::Int
 end
 
-function Database(el::XMLElement) 
+function Database(el::XMLElement)
     Database(
         attribute(el, "displayName"),
         attribute(el, "name"),
@@ -18,8 +18,13 @@ function Database(el::XMLElement)
     )
 end
 
-function databases()
-    
+"""
+    BioMart.databases()
+
+List the available databases.
+""" 
+@memoize function databases()
+
     url = string(BIOMART_URL, "?type=registry&requestid=biomaRt")
     r = HTTP.get(url)
     if r.status != 200

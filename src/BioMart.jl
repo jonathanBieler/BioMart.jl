@@ -1,6 +1,6 @@
 module BioMart
     
-    using HTTP, CSV, LightXML, DataFrames
+    using HTTP, CSV, LightXML, DataFrames, GenomicFeatures, Memoization
 
     include("config.jl")
     include("Database.jl")
@@ -9,5 +9,4 @@ module BioMart
     include("Filter.jl")
     include("Attribute.jl")
 
-    
 end # module

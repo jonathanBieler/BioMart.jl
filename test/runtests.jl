@@ -1,5 +1,5 @@
 using BioMart
-using Test, LightXML
+using Test, LightXML, GenomicFeatures
 
 @testset "Database & Dataset" begin
 
@@ -36,7 +36,7 @@ end
 @testset "Higher level API" begin
     
     q = BioMart.Query(
-        "hsapiens_gene_ensembl",
+        BioMart.Dataset("hsapiens_gene_ensembl"),
         BioMart.Filter(ensembl_gene_id = "ENSG00000146648"),
         BioMart.Attribute("external_gene_name"),
     )
@@ -52,7 +52,7 @@ end
     @test d[1,1] == "EGFR"
 
     q = BioMart.Query(
-        "hsapiens_gene_ensembl",
+        BioMart.Dataset("hsapiens_gene_ensembl"),
         BioMart.Filters(
             ensembl_gene_id = "ENSG00000146648", 
             chromosome_name = "7"
@@ -67,9 +67,23 @@ end
     @test d.Strand[1] == 1
 
     # try another dataset
-    q = BioMart.Query(
+    d = BioMart.query(
         BioMart.Dataset("maj_gene_ensembl"),
         BioMart.Filter(chromosomal_region = "1:1:200000:1"),
+        BioMart.Attribute("external_gene_name"),
+        BioMart.Attribute("ensembl_gene_id"),
+        BioMart.Attribute("ensembl_transcript_id"),
+    )
+    @test any(d[:,1] .== "Gm26206")
+
+end
+
+
+@testset "Intervals" begin
+    
+    q = BioMart.Query(
+        BioMart.Dataset("maj_gene_ensembl"),
+        Interval("1",1,200000),
         BioMart.Attribute("external_gene_name"),
         BioMart.Attribute("ensembl_gene_id"),
         BioMart.Attribute("ensembl_transcript_id"),
