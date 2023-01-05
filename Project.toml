@@ -1,7 +1,7 @@
 name = "BioMart"
 uuid = "d3a97c8b-a0ae-4566-9541-30732b1a2223"
 authors = ["Jonathan Bieler <jonathan.bieler@alumni.epfl.ch>"]
-version = "0.1.0"
+version = "0.1.1"
 
 [deps]
 CSV = "336ed68f-0bac-5ca0-87d4-7b16caf5d00b"
@@ -12,7 +12,13 @@ LightXML = "9c8b4983-aa76-5018-a973-4c85ecc9e179"
 Memoization = "6fafb56a-5788-4b4e-91ca-c0cea6611c73"
 
 [compat]
-julia = "1"
+julia = "1.5"
+CSV = "0.10"
+DataFrames = "1.0"
+GenomicFeatures = "2.0"
+HTTP = "1.0"
+LightXML = "0.9"
+Memoization = "0.1"
 
 [extras]
 GenomicFeatures = "899a7d2d-5c61-547b-bef9-6698a8d05446"

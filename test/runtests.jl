@@ -68,13 +68,13 @@ end
 
     # try another dataset
     d = BioMart.query(
-        BioMart.Dataset("maj_gene_ensembl"),
-        BioMart.Filter(chromosomal_region = "1:1:200000:1"),
-        BioMart.Attribute("external_gene_name"),
+        BioMart.Dataset("mmaj_gene_ensembl"),
+        BioMart.Filter(chromosomal_region = "1:1:2000000:1"),
+        BioMart.Attributes("external_gene_name", "chromosome_name"),
         BioMart.Attribute("ensembl_gene_id"),
         BioMart.Attribute("ensembl_transcript_id"),
     )
-    @test any(d[:,1] .== "Gm26206")
+    @test any(d[!,"Gene name"] .== "Gm26206")
 
 end
 
@@ -82,14 +82,14 @@ end
 @testset "Intervals" begin
     
     q = BioMart.Query(
-        BioMart.Dataset("maj_gene_ensembl"),
-        Interval("1",1,200000),
+        BioMart.Dataset("mmaj_gene_ensembl"),
+        BioMart.Interval("1",1,200000),
         BioMart.Attribute("external_gene_name"),
         BioMart.Attribute("ensembl_gene_id"),
         BioMart.Attribute("ensembl_transcript_id"),
     )
     d = q()
-    @test any(d[:,1] .== "Gm26206")
+    @test any(d[!,"Gene name"] .== "Gm26206")
 
 end
 

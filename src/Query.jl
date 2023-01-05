@@ -68,7 +68,7 @@ Exectute a `Query` and returns a `DataFrame` with the results.
 function execute(q::Query) 
     query = HTTP.URIs.escapeuri(string(q.xdoc))
     r = HTTP.get(string(BIOMART_URL, "?query=", query))
-    CSV.read(r.body, delim = '\t')
+    CSV.read(r.body, DataFrame; delim = '\t')
 end
 
 (q::Query)() = execute(q)
