@@ -1,7 +1,6 @@
 # BioMart
 
-[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://jonathanBieler.github.io/BioMart.jl/stable)
-[![Dev](https://img.shields.io/badge/docs-dev-blue.svg)](https://jonathanBieler.github.io/BioMart.jl/dev)
+[![Stable](https://img.shields.io/badge/docs-stable-blue.svg)](https://docs.juliahub.com/BioMart/V5iMB/)
 
 [![Build Status](https://github.com/jonathanBieler/BioMart.jl/actions/workflows/CI.yml/badge.svg?branch=main)](https://github.com/jonathanBieler/BioMart.jl/actions/workflows/CI.yml?query=branch%3Amain)
 [![Coverage](https://codecov.io/gh/jonathanBieler/BioMart.jl/branch/main/graph/badge.svg)](https://codecov.io/gh/jonathanBieler/BioMart.jl)
